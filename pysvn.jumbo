@@ -1,0 +1,22 @@
+pkgname=pysvn
+pkgver=1.7.2.0
+pkgrel=2
+pkgdesc='The pysvn module is a python interface to the Subversion version control system'
+depends=('python', 'subversion')
+sources=("${JUMBO_REPO}/packages/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('9ccf56b0097eaa0eeda15780a3a453a8')
+
+jumbo_install() {
+    cd "${srcdir}/${pkgname}-${pkgver}/Source"
+    python setup.py configure \
+        --svn-inc-dir="${JUMBO_ROOT}/include/subversion-1" \
+        --apr-inc-dir="${JUMBO_ROOT}/include/apr-1" \
+        --svn-bin-dir="${JUMBO_ROOT}/bin" \
+        --svn-lib-dir="${JUMBO_ROOT}/lib" \
+        --apr-lib-dir="${JUMBO_ROOT}/lib"
+    make
+    mkdir -p "${JUMBO_ROOT}/lib/python2.7/pysvn"
+    pwd
+    cd pysvn
+    cp __init__.py _pysvn_2_7.so "${JUMBO_ROOT}/lib/python2.7/pysvn"
+}
