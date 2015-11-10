@@ -1,8 +1,8 @@
 pkgname=pysvn
 pkgver=1.7.2.0
-pkgrel=2
+pkgrel=1
 pkgdesc='The pysvn module is a python interface to the Subversion version control system'
-depends=('python', 'subversion')
+depends=('python' 'subversion')
 sources=("${JUMBO_REPO}/packages/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('9ccf56b0097eaa0eeda15780a3a453a8')
 
